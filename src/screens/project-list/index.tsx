@@ -15,6 +15,7 @@ import { Typography } from "antd";
 import { useAsync } from "../../utils/use-async";
 import { useProjects } from "../../utils/project";
 import { useUsers } from "../../utils/user";
+import { Test } from "../../components/test-closure";
 // import {Helmet} from 'react-helmet';
 
 const apiUrl = process.env.REACT_APP_API_URL;
