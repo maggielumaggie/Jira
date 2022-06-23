@@ -18,7 +18,7 @@ export interface Project {
 interface ListProps extends TableProps<Project> {
   users: User[];
   refresh?: () => void;
-  setProjectModalOpen: (isOpen: boolean) => void;
+  projectButton: JSX.Element;
 }
 
 export const List = ({ users, ...props }: ListProps) => {
@@ -85,7 +85,7 @@ export const List = ({ users, ...props }: ListProps) => {
                     <Menu.Item key={"edit"}></Menu.Item>
                     <ButtonNoPadding
                       type={"link"}
-                      onClick={() => props.setProjectModalOpen(true)}
+                      onClick={() => props.projectButton}
                     >
                       编辑
                     </ButtonNoPadding>
