@@ -1,9 +1,11 @@
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { cleanObject } from "./index";
 
 export const useUrlQueryParam = <K extends string>(keys: K[]) => {
   const [searchParams, setSearchParam] = useSearchParams();
+  const [stateKeys] = useState(keys);
+
   return [
     useMemo(
       () =>
@@ -11,7 +13,7 @@ export const useUrlQueryParam = <K extends string>(keys: K[]) => {
           return { ...prev, [key]: searchParams.get(key) || "" };
         }, {} as { [key in K]: string }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [searchParams]
+      [searchParams, stateKeys]
     ),
     (params: Partial<{ [key in K]: unknown }>) => {
       const o = cleanObject({
